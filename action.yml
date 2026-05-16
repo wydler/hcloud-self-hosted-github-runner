@@ -103,6 +103,15 @@ inputs:
       - repo
       - org
     default: 'repo'
+  runner_start_method:
+    description: >-
+      How to start the runner: 'standalone' (default run.sh script) or 'systemd'
+    required: false
+    type: 'choice'
+    options:
+    - standalone
+    - systemd
+    default: 'standalone'
   server_id:
     description: >-
       ID (integer) of Hetzner Cloud Server to delete.
