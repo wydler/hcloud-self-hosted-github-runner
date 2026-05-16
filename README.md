@@ -232,10 +232,16 @@ ccx33   8       dedicated   x86            32.0 GB    240 GB
 ccx43   16      dedicated   x86            64.0 GB    360 GB
 ccx53   32      dedicated   x86            128.0 GB   600 GB
 ccx63   48      dedicated   x86            192.0 GB   960 GB
-cx22    2       shared      x86            4.0 GB     40 GB
-cx32    4       shared      x86            8.0 GB     80 GB
-cx42    8       shared      x86            16.0 GB    160 GB
-cx52    16      shared      x86            32.0 GB    320 GB
+cpx12   1       shared      x86            2.0 GB     40 GB
+cpx22   2       shared      x86            4.0 GB     80 GB
+cpx32   4       shared      x86            8.0 GB     160 GB
+cpx42   8       shared      x86            16.0 GB    320 GB
+cpx52   12      shared      x86            24.0 GB    480 GB
+cpx62   16      shared      x86            32.0 GB    640 GB
+cx23    2       shared      x86            4.0 GB     40 GB
+cx33    4       shared      x86            8.0 GB     80 GB
+cx43    8       shared      x86            16.0 GB    160 GB
+cx53    16      shared      x86            32.0 GB    320 GB
 ```
 
 ### Images
@@ -247,21 +253,24 @@ hcloud image list --architecture "x86" --output "columns=NAME,DESCRIPTION" --typ
 ```
 
 ```text
-NAME              DESCRIPTION
-alma-8            AlmaLinux 8
-alma-9            AlmaLinux 9
-centos-stream-9   CentOS Stream 9
-debian-11         Debian 11
-debian-12         Debian 12
-fedora-39         Fedora 39
-fedora-40         Fedora 40
-fedora-41         Fedora 41
-opensuse-15       openSUSE Leap 15
-rocky-8           Rocky Linux 8
-rocky-9           Rocky Linux 9
-ubuntu-20.04      Ubuntu 20.04
-ubuntu-22.04      Ubuntu 22.04
-ubuntu-24.04      Ubuntu 24.04
+NAME               DESCRIPTION
+alma-10            AlmaLinux 10
+alma-8             AlmaLinux 8
+alma-9             AlmaLinux 9
+centos-stream-10   CentOS Stream 10
+centos-stream-9    CentOS Stream 9
+debian-11          Debian 11
+debian-12          Debian 12
+debian-13          Debian 13
+fedora-42          Fedora 42
+fedora-43          Fedora 43
+opensuse-15        openSUSE Leap 15
+opensuse-16        openSUSE Leap 16
+rocky-10           Rocky Linux 10
+rocky-8            Rocky Linux 8
+rocky-9            Rocky Linux 9
+ubuntu-22.04       Ubuntu 22.04
+ubuntu-24.04       Ubuntu 24.04
 ```
 
 **List ARM Images:**
