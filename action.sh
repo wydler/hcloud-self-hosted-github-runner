@@ -289,7 +289,7 @@ if [[ "$MY_MODE" == "delete" ]]; then
 		-X DELETE \
 		--retry "$MY_DELETE_WAIT" \
 		--retry-delay "$WAIT_SEC" \
-		--retry-all-errors \
+		"${SERVER_RETRY_OPT}" \
 		--fail-with-body \
 		-H "Content-Type: application/json" \
 		-H "Authorization: Bearer ${MY_HETZNER_TOKEN}" \
