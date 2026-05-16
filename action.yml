@@ -99,8 +99,8 @@ inputs:
     required: false
     type: 'choice'
     options:
-    - repo
-    - org
+      - repo
+      - org
     default: 'repo'
   server_id:
     description: >-
