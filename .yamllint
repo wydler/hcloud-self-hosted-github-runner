@@ -13,6 +13,6 @@ rules:
   line-length:
     max: 255
   comments:
-    ignore: cloud-init.yaml
+    ignore: cloud-init.template.yml
   document-start:
-    ignore: cloud-init.yaml
+    ignore: cloud-init.template.yml
