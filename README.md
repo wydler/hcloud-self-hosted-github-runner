@@ -21,6 +21,9 @@ This [GitHub Action](./action.sh) is written in Bash (Shell Script).
 Everything was carefully documented and kept as simple as possible.
 The aim is to enable quick and easy auditability of the code.
 
+> [!NOTE]
+> If you want to use Ubuntu images compatible with the official GitHub-hosted runners, have a look at [runner-images-hetzner-cloud](https://github.com/wydler/runner-images-hetzner-cloud). The repository can be used to build Hetzner Cloud snapshots based on the official GitHub-hosted Ubuntu runner environments. These snapshots can then serve as the base image for creating self-hosted runners with this action.
+
 ## Use Cases
 
 This section highlights how using Hetzner Cloud with self-hosted runners for your GitHub Actions CI/CD workflows can lead to significant cost savings and predictable billing compared to relying solely on GitHub-managed runners.
