@@ -263,6 +263,14 @@ if [[ "$MY_VOLUMES" != "null" ]]; then
 	}
 fi
 
+# Do not retry delete if api return 404 (default: false)
+MY_NO_RETRY_ON_DELETE_404=${INPUT_NO_RETRY_ON_DELETE_404}
+if [[ "$MY_NO_RETRY_ON_DELETE_404" == true ]]; then
+	SERVER_RETRY_OPT="--no-retry-all-errors"
+else
+	SERVER_RETRY_OPT="--retry-all-errors"
+fi
+
 #
 # DELETE
 #
@@ -281,7 +289,7 @@ if [[ "$MY_MODE" == "delete" ]]; then
 		-X DELETE \
 		--retry "$MY_DELETE_WAIT" \
 		--retry-delay "$WAIT_SEC" \
-		--retry-all-errors \
+		"${SERVER_RETRY_OPT}" \
 		--fail-with-body \
 		-H "Content-Type: application/json" \
 		-H "Authorization: Bearer ${MY_HETZNER_TOKEN}" \
