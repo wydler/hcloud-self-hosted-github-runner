@@ -101,7 +101,7 @@ inputs:
     options:
     - repo
     - org
-    default: 'repo'    
+    default: 'repo'
   server_id:
     description: >-
       ID (integer) of Hetzner Cloud Server to delete.
