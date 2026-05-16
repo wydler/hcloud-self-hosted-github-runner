@@ -21,6 +21,9 @@ This [GitHub Action](./action.sh) is written in Bash (Shell Script).
 Everything was carefully documented and kept as simple as possible.
 The aim is to enable quick and easy auditability of the code.
 
+> [!NOTE]
+> If you want to use Ubuntu images compatible with the official GitHub-hosted runners, have a look at [runner-images-hetzner-cloud](https://github.com/wydler/runner-images-hetzner-cloud). The repository can be used to build Hetzner Cloud snapshots based on the official GitHub-hosted Ubuntu runner environments. These snapshots can then serve as the base image for creating self-hosted runners with this action.
+
 ## Use Cases
 
 This section highlights how using Hetzner Cloud with self-hosted runners for your GitHub Actions CI/CD workflows can lead to significant cost savings and predictable billing compared to relying solely on GitHub-managed runners.
@@ -29,7 +32,7 @@ This section highlights how using Hetzner Cloud with self-hosted runners for you
 
 > [!IMPORTANT]
 > Hetzner always round up the hourly usage of a server.
-> If you create a server just for a few minutes, we will still bill you for one whole hour. ([FAQ](https://docs.hetzner.com/cloud/billing/faq)).
+> If you create a server just for a few minutes, we will still bill you for one whole hour. ([FAQ](https://docs.hetzner.com/cloud/billing/faq/)).
 
 * **Potentially Lower Costs for High Usage:** For organizations with consistently high CI/CD usage, self-hosting on Hetzner Cloud can be significantly more cost-effective than paying for GitHub Actions minutes, especially for larger jobs or parallel execution.
 * **No Usage Limits (Within Server Capacity):** You're not restricted by GitHub Actions usage limits (within the capacity of your Hetzner Cloud Server). This is beneficial for large builds, extensive testing, or frequent deployments.
@@ -79,9 +82,12 @@ Fine-grained personal access tokens
     * [More Help](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
 1. **Generate an Hetzner Cloud API token** with "Read & Write" permissions in the Hetzner Cloud Console
     * [Hetzner Cloud Console](https://console.hetzner.cloud/) → Select project → Security → API Tokens
-    * [More Help](https://docs.hetzner.com/cloud/api/getting-started/generating-api-token)
-1. **Add both tokens as repository secrets:**
-    * GitHub → Select repository → Settings → Secrets and variables → Actions → New repository secrets
+    * [More Help](https://docs.hetzner.com/cloud/api/getting-started/generating-api-token/)
+1. **Add both tokens as organization or repository secrets:**
+    1. GitHub → Select repository → Settings → Security and quality → Secrets and variables → Actions → New repository secrets
+        * `PERSONAL_ACCESS_TOKEN`: Your GitHub Personal Access Token
+        * `HCLOUD_TOKEN`: Your Hetzner Cloud API Token
+    2. GitHub → Select Organization → Settings → Security → Secrets and variables → Actions → New organization secrets
         * `PERSONAL_ACCESS_TOKEN`: Your GitHub Personal Access Token
         * `HCLOUD_TOKEN`: Your Hetzner Cloud API Token
     * [More Help](https://docs.github.com/actions/security-guides/encrypted-secrets)
