@@ -111,6 +111,7 @@ jobs:
           mode: create
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           hcloud_token: ${{ secrets.HCLOUD_TOKEN }}
+          runner_scope: repo
           server_type: cx23
           location: nbg1  # Nuremberg, Germany
           image: rocky-9 # Rocky Linux 9
@@ -139,6 +140,7 @@ jobs:
           mode: delete
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           hcloud_token: ${{ secrets.HCLOUD_TOKEN }}
+          runner_scope: repo
           name: ${{ needs.create-runner.outputs.label }}
           server_id: ${{ needs.create-runner.outputs.server_id }}
 ```
@@ -172,6 +174,7 @@ jobs:
 | `server_wait`       |   | Wait up to `server_wait` retries (10 sec each) for the Hetzner Cloud Server to start. | `30` (5 min) |
 | `ssh_key`           |   | Comma separated SSH key IDs (integer) which should be injected into the Server at creation time. | `null` |
 | `volume`            |   | Comma separated Volume IDs (integer) to attach and mount to the Server during creation. Volumes will be automatically mounted at `/mnt/HC_Volume_[VOLUME-ID]`. Volumes must be in the same location as the Server. More details in [Volumes section](#Volumes). | `null` |
+| `runner_scope`      |   | Select scope for this runner. 'org' creates a org-wide runner, while 'repo' creates a repo-only runner. | `repo` |
 
 ## Outputs
 
