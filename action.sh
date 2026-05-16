@@ -444,7 +444,7 @@ fi
 MAX_RETRIES=$MY_CREATE_WAIT
 RETRY_COUNT=0
 while [[ $RETRY_COUNT -lt $MAX_RETRIES ]]; do
-	echo "Create Server..."
+	echo "Create Server $MY_NAME..."
 	if curl \
 	-X POST \
 	--fail-with-body \
