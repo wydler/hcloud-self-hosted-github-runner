@@ -393,6 +393,11 @@ elif [[ "$INPUT_RUNNER_START_METHOD" == "systemd" ]]; then
 	# shellcheck disable=SC2016
 	yq -i '.runcmd += ["$MY_RUNNER_DIR/svc.sh install $(id -nu)", "$MY_RUNNER_DIR/svc.sh start"]' cloud-init.template.yml && \
 	echo "Set run method 'systemd' to cloud-init.template.yml."
+elif [[ "$INPUT_RUNNER_START_METHOD" == "systemd-stopped" ]]; then
+	#https://docs.github.com/en/actions/how-tos/manage-runners/self-hosted-runners/configure-the-application
+	# shellcheck disable=SC2016
+	yq -i '.runcmd += ["$MY_RUNNER_DIR/svc.sh install $(id -nu)"]' cloud-init.template.yml && \
+	echo "Set run method 'systemd-stopped' to cloud-init.template.yml."	
 fi
 
 # Substitute environment variables in the cloud-init template and create the final cloud-init configuration
@@ -528,6 +533,12 @@ while [[ $RETRY_COUNT -lt $MAX_RETRIES ]]; do
 done
 if [[ "$MY_HETZNER_SERVER_STATUS" != "running" ]]; then
 	exit_with_failure "Failed to start Hetzner Cloud Server! Please check manually."
+fi
+
+if [[ "$INPUT_RUNNER_START_METHOD" == "systemd-stopped" ]]; then
+	echo "Run method is 'systemd-stopped'. Won't wait for GitHub Actions Runner registration."
+	echo "The Hetzner Cloud Server #${MY_HETZNER_SERVER_ID} is ready for use 🚀" >> "$GITHUB_STEP_SUMMARY"
+	exit 0
 fi
 
 # Wait for GitHub Actions Runner registration

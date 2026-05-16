@@ -111,6 +111,7 @@ inputs:
     options:
       - standalone
       - systemd
+      - systemd-stopped
     default: 'standalone'
   server_id:
     description: >-
