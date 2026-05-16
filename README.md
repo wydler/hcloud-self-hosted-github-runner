@@ -151,30 +151,31 @@ jobs:
 > Use an SSH key ID (`ssh_key`) to disable root password generation and Hetzner Cloud email notifications.
 
 | Name                | Required | Description | Default |
-|---------------------|----------|-------------|---------|
-| `create_wait`       |   | Wait up to `create_wait` retries (10 sec each) to create the Server resource via the Hetzner Cloud API. Retry if: Resource is not available ([Limited availability of Cloud plans](https://status.hetzner.com/incident/aa5ce33b-faa5-4fd0-9782-fde43cd270cf)). | `360` (1 hour) |
-| `delete_wait`       |   | Wait up to `delete_wait` retries (10 sec each) to delete the Server resource via the Hetzner Cloud API. Retry if: Temporary outage of the API ([Fault report on Cloud API and Cloud Console](https://status.hetzner.com/incident/440e6b5f-249c-45fd-8074-e5d79cc4e2a6)). | `360` (1 hour) |
-| `enable_ipv4`       |   | Attach an IPv4 on the public NIC (true/false). If false, no IPv4 address will be attached. Warning: The GitHub API requires IPv4. Disabling it will result in connection failures. | `true` |
-| `enable_ipv6`       |   | Attach an IPv6 on the public NIC (true/false). If false, no IPv6 address will be attached. | `true` |
-| `github_token`      | ✓ (always) | Fine-grained GitHub Personal Access Token (PAT) with 'Read and write' access to 'Administration' assigned. |  |
-| `hcloud_token`      | ✓ (always) | Hetzner Cloud API token with 'Read & Write' permissions assigned. |  |
-| `image`             |   | Name or ID (integer) of the Image the Server is created from. | `ubuntu-24.04` (Ubuntu 24.04) |
-| `location`          |   | Name of Location to create Server in. | `nbg1` (Nürnberg 1) |
-| `mode`              | ✓ (always) | Choose either `create` to create a new GitHub Actions Runner or `delete` to delete a previously created one. |  |
-| `name`              | ✓ (mode `delete`, optional for mode `create`) | The name for the server and label for the GitHub Actions Runner (must be unique within the project and conform to hostname rules: `^[a-zA-Z0-9_-]{1,64}`). | `gh-runner-[RANDOM-INT]` |
-| `network`           |   | Comma separated Network IDs (integer) which should be attached to the Server private network interface at the creation time. | `null` |
-| `pre_runner_script` |   | Specifies bash commands to run before the GitHub Actions Runner starts. It's useful for installing dependencies with apt-get, dnf, zypper etc. |  |
-| `primary_ipv4`      |   | ID (integer) of the IPv4 Primary IP to use. If omitted and `enable_ipv4` is true, a new IPv4 Primary IP will automatically be created. | `null` |
-| `primary_ipv6`      |   | ID (integer) of the IPv6 Primary IP to use. If omitted and `enable_ipv6` is true, a new IPv6 Primary IP will automatically be created. | `null` |
-| `runner_dir`        |   | GitHub Actions Runner installation directory (created automatically; no trailing slash). | `/actions-runner` |
-| `runner_version`    |   | GitHub Actions Runner version (omit "v"; e.g., "2.321.0"). "latest" will install the latest version. "skip" will skip the installation. A working installation is expected in the `runner_dir`. | `latest` |
-| `runner_wait`       |   | Wait up to `runner_wait` retries (10 sec each) for runner registration. | `60` (10 min) |
-| `server_id`         | ✓ (mode `stop`) | ID (integer) of Hetzner Cloud Server to delete. | |
-| `server_type`       |   | Name of the Server type this Server should be created with. | `cx23` (Intel x86, 2 vCPU, 4GB RAM, 40GB SSD) |
-| `server_wait`       |   | Wait up to `server_wait` retries (10 sec each) for the Hetzner Cloud Server to start. | `30` (5 min) |
-| `ssh_key`           |   | Comma separated SSH key IDs (integer) which should be injected into the Server at creation time. | `null` |
-| `volume`            |   | Comma separated Volume IDs (integer) to attach and mount to the Server during creation. Volumes will be automatically mounted at `/mnt/HC_Volume_[VOLUME-ID]`. Volumes must be in the same location as the Server. More details in [Volumes section](#Volumes). | `null` |
-| `runner_scope`      |   | Select scope for this runner. 'org' creates a org-wide runner, while 'repo' creates a repo-only runner. | `repo` |
+|-----------------------|----------|-------------|---------|
+| `create_wait`         |   | Wait up to `create_wait` retries (10 sec each) to create the Server resource via the Hetzner Cloud API. Retry if: Resource is not available ([Limited availability of Cloud plans](https://status.hetzner.com/incident/aa5ce33b-faa5-4fd0-9782-fde43cd270cf)). | `360` (1 hour) |
+| `delete_wait`         |   | Wait up to `delete_wait` retries (10 sec each) to delete the Server resource via the Hetzner Cloud API. Retry if: Temporary outage of the API ([Fault report on Cloud API and Cloud Console](https://status.hetzner.com/incident/440e6b5f-249c-45fd-8074-e5d79cc4e2a6)). | `360` (1 hour) |
+| `enable_ipv4`         |   | Attach an IPv4 on the public NIC (true/false). If false, no IPv4 address will be attached. Warning: The GitHub API requires IPv4. Disabling it will result in connection failures. | `true` |
+| `enable_ipv6`         |   | Attach an IPv6 on the public NIC (true/false). If false, no IPv6 address will be attached. | `true` |
+| `github_token`        | ✓ (always) | Fine-grained GitHub Personal Access Token (PAT) with 'Read and write' access to 'Administration' assigned. |  |
+| `hcloud_token`        | ✓ (always) | Hetzner Cloud API token with 'Read & Write' permissions assigned. |  |
+| `image`               |   | Name or ID (integer) of the Image the Server is created from. | `ubuntu-24.04` (Ubuntu 24.04) |
+| `location`            |   | Name of Location to create Server in. | `nbg1` (Nürnberg 1) |
+| `mode`                | ✓ (always) | Choose either `create` to create a new GitHub Actions Runner or `delete` to delete a previously created one. |  |
+| `name`                | ✓ (mode `delete`, optional for mode `create`) | The name for the server and label for the GitHub Actions Runner (must be unique within the project and conform to hostname rules: `^[a-zA-Z0-9_-]{1,64}`). | `gh-runner-[RANDOM-INT]` |
+| `network`             |   | Comma separated Network IDs (integer) which should be attached to the Server private network interface at the creation time. | `null` |
+| `pre_runner_script`   |   | Specifies bash commands to run before the GitHub Actions Runner starts. It's useful for installing dependencies with apt-get, dnf, zypper etc. |  |
+| `primary_ipv4`        |   | ID (integer) of the IPv4 Primary IP to use. If omitted and `enable_ipv4` is true, a new IPv4 Primary IP will automatically be created. | `null` |
+| `primary_ipv6`        |   | ID (integer) of the IPv6 Primary IP to use. If omitted and `enable_ipv6` is true, a new IPv6 Primary IP will automatically be created. | `null` |
+| `runner_dir`          |   | GitHub Actions Runner installation directory (created automatically; no trailing slash). | `/actions-runner` |
+| `runner_version`      |   | GitHub Actions Runner version (omit "v"; e.g., "2.321.0"). "latest" will install the latest version. "skip" will skip the installation. A working installation is expected in the `runner_dir`. | `latest` |
+| `runner_wait`         |   | Wait up to `runner_wait` retries (10 sec each) for runner registration. | `60` (10 min) |
+| `server_id`           | ✓ (mode `stop`) | ID (integer) of Hetzner Cloud Server to delete. | |
+| `server_type`         |   | Name of the Server type this Server should be created with. | `cx23` (Intel x86, 2 vCPU, 4GB RAM, 40GB SSD) |
+| `server_wait`         |   | Wait up to `server_wait` retries (10 sec each) for the Hetzner Cloud Server to start. | `30` (5 min) |
+| `ssh_key`             |   | Comma separated SSH key IDs (integer) which should be injected into the Server at creation time. | `null` |
+| `volume`              |   | Comma separated Volume IDs (integer) to attach and mount to the Server during creation. Volumes will be automatically mounted at `/mnt/HC_Volume_[VOLUME-ID]`. Volumes must be in the same location as the Server. More details in [Volumes section](#Volumes). | `null` |
+| `runner_scope`        |   | Select scope for this runner. 'org' creates a org-wide runner, while 'repo' creates a repo-only runner. | `repo` |
+| `runner_start_method` |   | Defines how the GitHub runner process is started. Supported values are `standalone` and `systemd`. | `standalone` |
 
 ## Outputs
 
