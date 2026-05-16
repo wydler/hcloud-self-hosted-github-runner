@@ -80,8 +80,11 @@ Fine-grained personal access tokens
 1. **Generate an Hetzner Cloud API token** with "Read & Write" permissions in the Hetzner Cloud Console
     * [Hetzner Cloud Console](https://console.hetzner.cloud/) → Select project → Security → API Tokens
     * [More Help](https://docs.hetzner.com/cloud/api/getting-started/generating-api-token)
-1. **Add both tokens as repository secrets:**
-    * GitHub → Select repository → Settings → Secrets and variables → Actions → New repository secrets
+1. **Add both tokens as organization or repository secrets:**
+    1. GitHub → Select repository → Settings → Security and quality → Secrets and variables → Actions → New repository secrets
+        * `PERSONAL_ACCESS_TOKEN`: Your GitHub Personal Access Token
+        * `HCLOUD_TOKEN`: Your Hetzner Cloud API Token
+    2. GitHub → Select Organization → Settings → Security → Secrets and variables → Actions → New organization secrets
         * `PERSONAL_ACCESS_TOKEN`: Your GitHub Personal Access Token
         * `HCLOUD_TOKEN`: Your Hetzner Cloud API Token
     * [More Help](https://docs.github.com/actions/security-guides/encrypted-secrets)
