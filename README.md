@@ -367,6 +367,8 @@ Two additional implementations for GitHub Actions runners on Hetzner Cloud are a
 
 * [GitHub Action for Hetzner Cloud Self-Hosted Runners](https://github.com/stonemaster/hetzner-github-runner) from [André Stein](https://github.com/stonemaster)
 * [Ephemeral GitHub runners on Hetzner Cloud](https://github.com/Kwarf/hetzner-ephemeral-runner) from [Jimmy Bergström](https://github.com/Kwarf)
+* [Self-Hosted GitHub Actions Runner on Hetzner Cloud](https://github.com/Cyclenerd/hcloud-github-runner) from [Nils Knieling](https://github.com/Cyclenerd)
+
 
 ## License
 
