@@ -393,6 +393,11 @@ elif [[ "$INPUT_RUNNER_START_METHOD" == "systemd" ]]; then
 	# shellcheck disable=SC2016
 	yq -i '.runcmd += ["$MY_RUNNER_DIR/svc.sh install $(id -nu)", "$MY_RUNNER_DIR/svc.sh start"]' cloud-init.template.yml && \
 	echo "Set run method 'systemd' to cloud-init.template.yml."
+elif [[ "$INPUT_RUNNER_START_METHOD" == "systemd-stopped" ]]; then
+	#https://docs.github.com/en/actions/how-tos/manage-runners/self-hosted-runners/configure-the-application
+	# shellcheck disable=SC2016
+	yq -i '.runcmd += ["$MY_RUNNER_DIR/svc.sh install $(id -nu)"]' cloud-init.template.yml && \
+	echo "Set run method 'systemd-stopped' to cloud-init.template.yml."	
 fi
 
 # Substitute environment variables in the cloud-init template and create the final cloud-init configuration
