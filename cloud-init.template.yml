@@ -13,7 +13,7 @@ runcmd:
   - bash $MY_RUNNER_DIR/pre_runner_script.sh
   - cd $MY_RUNNER_DIR
   - bash $MY_RUNNER_DIR/install.sh -v "$MY_RUNNER_VERSION" -d "$MY_RUNNER_DIR"
-  - $MY_RUNNER_DIR/config.sh --url "https://github.com/${MY_RUNNER_TARGET}" --token "${MY_GITHUB_RUNNER_REGISTRATION_TOKEN}" --name "${MY_NAME}" --labels "${MY_NAME},hetzner"
+  - $MY_RUNNER_DIR/config.sh --url "https://github.com/${MY_RUNNER_TARGET}" --token "${MY_GITHUB_RUNNER_REGISTRATION_TOKEN}" --name "${MY_NAME}" --labels "${MY_NAME},hetzner,server_id=$(curl http://169.254.169.254/hetzner/v1/metadata/instance-id)"
 write_files:
   - path: $MY_RUNNER_DIR/pre_runner_script.sh
     encoding: b64
