@@ -109,8 +109,8 @@ inputs:
     required: false
     type: 'choice'
     options:
-    - standalone
-    - systemd
+      - standalone
+      - systemd
     default: 'standalone'
   server_id:
     description: >-
