@@ -376,10 +376,12 @@ export MY_RUNNER_TARGET
 # Setup runner start method. 
 # https://docs.github.com/en/actions/how-tos/manage-runners/self-hosted-runners/configure-the-application
 if [[ "$INPUT_RUNNER_START_METHOD" == "standalone" ]]; then
+	# shellcheck disable=SC2016
 	yq -i '.runcmd += ["$MY_RUNNER_DIR/run.sh"]' cloud-init.template.yml && \
 	echo "Set run method 'standalone' to cloud-init.template.yml."
 elif [[ "$INPUT_RUNNER_START_METHOD" == "systemd" ]]; then
 	#https://docs.github.com/en/actions/how-tos/manage-runners/self-hosted-runners/configure-the-application
+	# shellcheck disable=SC2016
 	yq -i '.runcmd += ["$MY_RUNNER_DIR/svc.sh install $(id -nu)", "$MY_RUNNER_DIR/svc.sh start"]' cloud-init.template.yml && \
 	echo "Set run method 'systemd' to cloud-init.template.yml."
 fi
