@@ -29,7 +29,7 @@ This section highlights how using Hetzner Cloud with self-hosted runners for you
 
 > [!IMPORTANT]
 > Hetzner always round up the hourly usage of a server.
-> If you create a server just for a few minutes, we will still bill you for one whole hour. ([FAQ](https://docs.hetzner.com/cloud/billing/faq)).
+> If you create a server just for a few minutes, we will still bill you for one whole hour. ([FAQ](https://docs.hetzner.com/cloud/billing/faq/)).
 
 * **Potentially Lower Costs for High Usage:** For organizations with consistently high CI/CD usage, self-hosting on Hetzner Cloud can be significantly more cost-effective than paying for GitHub Actions minutes, especially for larger jobs or parallel execution.
 * **No Usage Limits (Within Server Capacity):** You're not restricted by GitHub Actions usage limits (within the capacity of your Hetzner Cloud Server). This is beneficial for large builds, extensive testing, or frequent deployments.
