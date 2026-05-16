@@ -232,10 +232,16 @@ ccx33   8       dedicated   x86            32.0 GB    240 GB
 ccx43   16      dedicated   x86            64.0 GB    360 GB
 ccx53   32      dedicated   x86            128.0 GB   600 GB
 ccx63   48      dedicated   x86            192.0 GB   960 GB
-cx22    2       shared      x86            4.0 GB     40 GB
-cx32    4       shared      x86            8.0 GB     80 GB
-cx42    8       shared      x86            16.0 GB    160 GB
-cx52    16      shared      x86            32.0 GB    320 GB
+cpx12   1       shared      x86            2.0 GB     40 GB
+cpx22   2       shared      x86            4.0 GB     80 GB
+cpx32   4       shared      x86            8.0 GB     160 GB
+cpx42   8       shared      x86            16.0 GB    320 GB
+cpx52   12      shared      x86            24.0 GB    480 GB
+cpx62   16      shared      x86            32.0 GB    640 GB
+cx23    2       shared      x86            4.0 GB     40 GB
+cx33    4       shared      x86            8.0 GB     80 GB
+cx43    8       shared      x86            16.0 GB    160 GB
+cx53    16      shared      x86            32.0 GB    320 GB
 ```
 
 ### Images
