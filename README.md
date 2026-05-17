@@ -40,7 +40,7 @@ This section highlights how using Hetzner Cloud with self-hosted runners for you
 The following table provides a comparison of pricing between GitHub-managed Actions runners and Hetzner Cloud with self-hosted runners (information provided without guarantee; prices exclude VAT):
 
 | Runner | [GitHub](https://docs.github.com/en/billing/reference/actions-runner-pricing) | [Hetzner](https://www.hetzner.com/cloud/) | Cost Saving | Cost Saving (%) |
-|-----------------|--------------|----------------|----------------|---------|
+|-----------------|----------------|----------------|----------------|---------|
 | 2 Core (Intel)  | $0.3600 USD/hr | $0.0080 USD/hr | $0.3520 USD/hr | 97,78 % |
 | 4 Core (Intel)  | $0.7200 USD/hr | $0.0128 USD/hr | $0.7072 USD/hr | 98.22 % |
 | 8 Core (Intel)  | $1.3200 USD/hr | $0.0224 USD/hr | $1.2976 USD/hr | 98.30 % |
