@@ -180,7 +180,7 @@ jobs:
 | `server_wait`             |   | Wait up to `server_wait` retries (10 sec each) for the Hetzner Cloud Server to start. | `30` (5 min) |
 | `ssh_key`                 |   | Comma separated SSH key IDs (integer) which should be injected into the Server at creation time. | `null` |
 | `volume`                  |   | Comma separated Volume IDs (integer) to attach and mount to the Server during creation. Volumes will be automatically mounted at `/mnt/HC_Volume_[VOLUME-ID]`. Volumes must be in the same location as the Server. More details in [Volumes section](#Volumes). | `null` |
-| `runner_scope`            |   | Select scope for this runner. 'org' creates a org-wide runner, while 'repo' creates a repo-only runner. | `repo` |
+| `runner_scope`            |   | Select scope for this runner. `org` creates a org-wide runner, while `repo` creates a repo-only runner. | `repo` |
 | `runner_start_method` |   | Defines how the GitHub runner process is started. Supported values are `standalone`, `systemd` and `systemd-stopped`. | `standalone` |
 | `no_retry_on_delete_404`  |   | The action does not attempt to delete again if the API already returns a 404 Not Found. Supported values are `true` and `false`. | `false` |
 
