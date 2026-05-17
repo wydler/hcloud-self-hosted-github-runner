@@ -164,7 +164,7 @@ jobs:
 | `enable_ipv6`             |   | Attach an IPv6 on the public NIC (true/false). If false, no IPv6 address will be attached. | `true` |
 | `github_token`            | ✓ (always) | Fine-grained GitHub Personal Access Token (PAT) with 'Read and write' access to 'Administration' assigned. |  |
 | `hcloud_token`            | ✓ (always) | Hetzner Cloud API token with 'Read & Write' permissions assigned. |  |
-| `image`                   |   | Name or ID (integer) of the Image the Server is created from. | `ubuntu-24.04` (Ubuntu 24.04) |
+| `image`                   |   | Name or ID (integer) of the Image or snapshot the Server is created from. | `ubuntu-24.04` (Ubuntu 24.04) |
 | `location`                |   | Name of Location to create Server in. | `nbg1` (Nürnberg 1) |
 | `mode`                    | ✓ (always) | Choose either `create` to create a new GitHub Actions Runner or `delete` to delete a previously created one. |  |
 | `name`                    | ✓ (mode `delete`, optional for mode `create`) | The name for the server and label for the GitHub Actions Runner (must be unique within the project and conform to hostname rules: `^[a-zA-Z0-9_-]{1,64}`). | `gh-runner-[RANDOM-INT]` |
