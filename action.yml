@@ -1,5 +1,5 @@
 ---
-name: Self-Hosted GitHub Actions Runner on Hetzner Cloud
+name: GitHub self-hosted runners for Hetzner Cloud
 description: A GitHub Action to automatically create Hetzner Cloud servers and register them as self-hosted GitHub Actions runners.
 author: Daniel Wydler
 
