@@ -40,7 +40,7 @@ This section highlights how using Hetzner Cloud with self-hosted runners for you
 The following table provides a comparison of pricing between GitHub-managed Actions runners and Hetzner Cloud with self-hosted runners (information provided without guarantee; prices exclude VAT):
 
 | Runner | [GitHub](https://docs.github.com/en/billing/reference/actions-runner-pricing) | [Hetzner](https://www.hetzner.com/cloud/) | Cost Saving | Cost Saving (%) |
-|-----------------|--------------|----------------|----------------|---------|
+|-----------------|----------------|----------------|----------------|---------|
 | 2 Core (Intel)  | $0.3600 USD/hr | $0.0080 USD/hr | $0.3520 USD/hr | 97,78 % |
 | 4 Core (Intel)  | $0.7200 USD/hr | $0.0128 USD/hr | $0.7072 USD/hr | 98.22 % |
 | 8 Core (Intel)  | $1.3200 USD/hr | $0.0224 USD/hr | $1.2976 USD/hr | 98.30 % |
@@ -164,7 +164,7 @@ jobs:
 | `enable_ipv6`             |   | Attach an IPv6 on the public NIC (true/false). If false, no IPv6 address will be attached. | `true` |
 | `github_token`            | ✓ (always) | Fine-grained GitHub Personal Access Token (PAT) with 'Read and write' access to 'Administration' assigned. |  |
 | `hcloud_token`            | ✓ (always) | Hetzner Cloud API token with 'Read & Write' permissions assigned. |  |
-| `image`                   |   | Name or ID (integer) of the Image the Server is created from. | `ubuntu-24.04` (Ubuntu 24.04) |
+| `image`                   |   | Name or ID (integer) of the Image or snapshot the Server is created from. | `ubuntu-24.04` (Ubuntu 24.04) |
 | `location`                |   | Name of Location to create Server in. | `nbg1` (Nürnberg 1) |
 | `mode`                    | ✓ (always) | Choose either `create` to create a new GitHub Actions Runner or `delete` to delete a previously created one. |  |
 | `name`                    | ✓ (mode `delete`, optional for mode `create`) | The name for the server and label for the GitHub Actions Runner (must be unique within the project and conform to hostname rules: `^[a-zA-Z0-9_-]{1,64}`). | `gh-runner-[RANDOM-INT]` |
@@ -180,7 +180,7 @@ jobs:
 | `server_wait`             |   | Wait up to `server_wait` retries (10 sec each) for the Hetzner Cloud Server to start. | `30` (5 min) |
 | `ssh_key`                 |   | Comma separated SSH key IDs (integer) which should be injected into the Server at creation time. | `null` |
 | `volume`                  |   | Comma separated Volume IDs (integer) to attach and mount to the Server during creation. Volumes will be automatically mounted at `/mnt/HC_Volume_[VOLUME-ID]`. Volumes must be in the same location as the Server. More details in [Volumes section](#Volumes). | `null` |
-| `runner_scope`            |   | Select scope for this runner. 'org' creates a org-wide runner, while 'repo' creates a repo-only runner. | `repo` |
+| `runner_scope`            |   | Select scope for this runner. `org` creates a org-wide runner, while `repo` creates a repo-only runner. | `repo` |
 | `runner_start_method` |   | Defines how the GitHub runner process is started. Supported values are `standalone`, `systemd` and `systemd-stopped`. | `standalone` |
 | `no_retry_on_delete_404`  |   | The action does not attempt to delete again if the API already returns a 404 Not Found. Supported values are `true` and `false`. | `false` |
 
@@ -349,8 +349,8 @@ hcloud volume create --name "volume-test" --size "10" --format "ext4" --location
 
 ## Security
 
-> We recommend that you only use self-hosted runners with private repositories.
-> This is because forks of your public repository can potentially run dangerous code on your self-hosted runner machine by creating a pull request that executes the code in a workflow.
+We recommend that you only use self-hosted runners with private repositories.  
+This is because forks of your public repository can potentially run dangerous code on your self-hosted runner machine by creating a pull request that executes the code in a workflow.
 
 For security considerations, see the [GitHub documentation](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners#self-hosted-runner-security).
 
