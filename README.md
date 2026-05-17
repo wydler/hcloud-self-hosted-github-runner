@@ -349,8 +349,8 @@ hcloud volume create --name "volume-test" --size "10" --format "ext4" --location
 
 ## Security
 
-> We recommend that you only use self-hosted runners with private repositories.
-> This is because forks of your public repository can potentially run dangerous code on your self-hosted runner machine by creating a pull request that executes the code in a workflow.
+We recommend that you only use self-hosted runners with private repositories.  
+This is because forks of your public repository can potentially run dangerous code on your self-hosted runner machine by creating a pull request that executes the code in a workflow.
 
 For security considerations, see the [GitHub documentation](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners#self-hosted-runner-security).
 
