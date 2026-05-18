@@ -237,6 +237,7 @@ elif [[ "$INPUT_RUNNER_SCOPE" == "repo" ]]; then
 	MY_RUNNER_SCOPE=repos/${GITHUB_REPOSITORY}
 	MY_RUNNER_TARGET=${GITHUB_REPOSITORY}
 	MY_RUNNER_URL="${GITHUB_REPOSITORY}"
+	MY_GITHUB_RUNNER_GROUP_NAME=None
 else
 	exit_with_failure "Invalid runner scope: $INPUT_RUNNER_SCOPE"
 fi
