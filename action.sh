@@ -213,6 +213,7 @@ if [[ "$INPUT_RUNNER_SCOPE" == "org" ]]; then
 	MY_RUNNER_SCOPE=orgs/${GITHUB_REPOSITORY%%/*}           # For api.github.com/${MY_RUNNER_SCOPE}/...
 	MY_RUNNER_TARGET=${GITHUB_REPOSITORY%%/*}               # For runner's `./config.sh --url ${MY_RUNNER_TARGET} ...`
 	MY_RUNNER_URL="organizations/${GITHUB_REPOSITORY%%/*}"  # For github.com/${MY_RUNNER_URL}/...
+	MY_GITHUB_RUNNER_GROUP_NAME=${INPUT_RUNNER_GROUP}		# 
 
 	#
 	curl -L \
