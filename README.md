@@ -274,6 +274,7 @@ rocky-8            Rocky Linux 8
 rocky-9            Rocky Linux 9
 ubuntu-22.04       Ubuntu 22.04
 ubuntu-24.04       Ubuntu 24.04
+ubuntu-26.04       Ubuntu 26.04
 ```
 
 **List ARM Images:**
