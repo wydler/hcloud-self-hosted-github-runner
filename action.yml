@@ -105,7 +105,7 @@ inputs:
     default: 'repo'
   runner_group:
     description: >-
-      Select runner group for the runner. Only available for organization runner (runner_scope: 'org')
+      Select runner group for the runner. Only available for organization runner (runner_scope: 'org').
     required: false
     default: 'Default'
   runner_start_method:
