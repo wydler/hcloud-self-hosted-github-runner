@@ -3,11 +3,6 @@
 [![Badge: Hetzer](https://img.shields.io/badge/Hetzner-D50C2D.svg?logo=hetzner&logoColor=white)](#readme)
 [![Badge: GitHub](https://img.shields.io/badge/GitHub-181717.svg?logo=github&logoColor=white)](#readme)
 [![Badge: Linux](https://img.shields.io/badge/Linux-FCC624.svg?logo=linux&logoColor=black)](#readme)
-[![Badge: Debian](https://img.shields.io/badge/Debian-A81D33.svg?logo=debian&logoColor=white)](#readme)
-[![Badge: Ubuntu](https://img.shields.io/badge/Ubuntu-E95420.svg?logo=ubuntu&logoColor=white)](#readme)
-[![Badge: Fedora](https://img.shields.io/badge/Fedora-51A2DA.svg?logo=fedora&logoColor=white)](#readme)
-[![Badge: Rocky Linux](https://img.shields.io/badge/Rocky%20Linux-10B981.svg?logo=rockylinux&logoColor=white)](#readme)
-[![Badge: openSUSE](https://img.shields.io/badge/openSUSE-73BA25.svg?logo=opensuse&logoColor=white)](#readme)
 [![Badge: GNU Bash](https://img.shields.io/badge/GNU%20Bash-4EAA25.svg?logo=gnubash&logoColor=white)](#readme)
 [![Badge: License](https://img.shields.io/github/license/cyclenerd/hcloud-github-runner)](https://github.com/Cyclenerd/hcloud-github-runner/blob/master/LICENSE)
 
