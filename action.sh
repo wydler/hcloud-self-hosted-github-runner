@@ -213,10 +213,31 @@ if [[ "$INPUT_RUNNER_SCOPE" == "org" ]]; then
 	MY_RUNNER_SCOPE=orgs/${GITHUB_REPOSITORY%%/*}           # For api.github.com/${MY_RUNNER_SCOPE}/...
 	MY_RUNNER_TARGET=${GITHUB_REPOSITORY%%/*}               # For runner's `./config.sh --url ${MY_RUNNER_TARGET} ...`
 	MY_RUNNER_URL="organizations/${GITHUB_REPOSITORY%%/*}"  # For github.com/${MY_RUNNER_URL}/...
+	MY_GITHUB_RUNNER_GROUP_NAME=${INPUT_RUNNER_GROUP}		# Store the configured GitHub Actions runner group name.
+
+	# Fetch all GitHub Actions runner groups for the configured scope and store the response locally.
+	curl -L \
+		--fail-with-body \
+		-o "github-runner-groups.json" \
+		-H "Accept: application/vnd.github+json" \
+		-H "Authorization: Bearer ${MY_GITHUB_TOKEN}" \
+		-H "X-GitHub-Api-Version: 2022-11-28" \
+		"https://api.github.com/${MY_RUNNER_SCOPE}/actions/runner-groups" \
+		|| exit_with_failure "Failed to get GitHub Runner groups from ${INPUT_RUNNER_SCOPE}:${MY_GITHUB_RUNNER_GROUP_NAME}!"
+
+	# Extract the ID of the configured runner group by name.
+	MY_GITHUB_RUNNER_GROUP_ID=$(jq -er ".runner_groups[] | select(.name == \"$MY_GITHUB_RUNNER_GROUP_NAME\") | .id" < "github-runner-groups.json")
+
+	# Check if MY_GITHUB_RUNNER_GROUP_ID is an integer
+	if [[ ! "$MY_GITHUB_RUNNER_GROUP_ID" =~ ^[0-9]+$ ]]; then
+		exit_with_failure "Failed to get ID of the GitHub runner group!"
+	fi
+
 elif [[ "$INPUT_RUNNER_SCOPE" == "repo" ]]; then
 	MY_RUNNER_SCOPE=repos/${GITHUB_REPOSITORY}
 	MY_RUNNER_TARGET=${GITHUB_REPOSITORY}
 	MY_RUNNER_URL="${GITHUB_REPOSITORY}"
+	MY_GITHUB_RUNNER_GROUP_NAME=None
 else
 	exit_with_failure "Invalid runner scope: $INPUT_RUNNER_SCOPE"
 fi
@@ -419,6 +440,7 @@ jq -n \
 	--arg     server_type     "$MY_SERVER_TYPE" \
 	--arg     name            "$MY_NAME" \
 	--arg     runner_scope    "${MY_RUNNER_SCOPE//\//_}" \
+	--arg     runner_group    "${MY_GITHUB_RUNNER_GROUP_NAME}" \
 	--argjson enable_ipv4     "$MY_ENABLE_IPV4" \
 	--argjson enable_ipv6     "$MY_ENABLE_IPV6" \
 	--rawfile cloud_init_yml  "cloud-init.yml" \
@@ -570,6 +592,21 @@ while [[ $RETRY_COUNT -lt $MAX_RETRIES ]]; do
 done
 if [[ ! "$MY_GITHUB_RUNNER_ID" =~ ^[0-9]+$ ]]; then
 	exit_with_failure "GitHub Actions Runner is not registered. Please check installation manually."
+fi
+
+# Assign the newly registered self-hosted runner to the configured GitHub Actions runner group.
+# This operation is only supported for organization-scoped runners.
+if [[ "$INPUT_RUNNER_SCOPE" == "org" ]]; then
+curl -L \
+	-X "PUT" \
+	--fail-with-body \
+	-o "registration-token.json" \
+	-H "Accept: application/vnd.github+json" \
+	-H "Authorization: Bearer ${MY_GITHUB_TOKEN}" \
+	-H "X-GitHub-Api-Version: 2022-11-28" \
+	"https://api.github.com/orgs/wydler/actions/runner-groups/${MY_GITHUB_RUNNER_GROUP_ID}/runners/${MY_GITHUB_RUNNER_ID}" \
+	|| exit_with_failure "Failed to retrieve GitHub Actions Runner registration token!"
+echo "Moved runner to runner group successfully."
 fi
 
 echo
