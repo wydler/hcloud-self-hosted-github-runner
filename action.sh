@@ -215,7 +215,7 @@ if [[ "$INPUT_RUNNER_SCOPE" == "org" ]]; then
 	MY_RUNNER_URL="organizations/${GITHUB_REPOSITORY%%/*}"  # For github.com/${MY_RUNNER_URL}/...
 	MY_GITHUB_RUNNER_GROUP_NAME=${INPUT_RUNNER_GROUP}		# 
 
-	#
+	# Fetch all GitHub Actions runner groups for the configured scope and store the response locally.
 	curl -L \
 		--fail-with-body \
 		-o "github-runner-groups.json" \
@@ -225,7 +225,7 @@ if [[ "$INPUT_RUNNER_SCOPE" == "org" ]]; then
 		"https://api.github.com/${MY_RUNNER_SCOPE}/actions/runner-groups" \
 		|| exit_with_failure "Failed to get GitHub Runner groups from ${INPUT_RUNNER_SCOPE}:${MY_GITHUB_RUNNER_GROUP_NAME}!"
 
-	#
+	# Extract the ID of the configured runner group by name.
 	MY_GITHUB_RUNNER_GROUP_ID=$(jq -er ".runner_groups[] | select(.name == \"$MY_GITHUB_RUNNER_GROUP_NAME\") | .id" < "github-runner-groups.json")
 
 	# Check if MY_GITHUB_RUNNER_GROUP_ID is an integer
@@ -593,7 +593,8 @@ if [[ ! "$MY_GITHUB_RUNNER_ID" =~ ^[0-9]+$ ]]; then
 	exit_with_failure "GitHub Actions Runner is not registered. Please check installation manually."
 fi
 
-#
+# Assign the newly registered self-hosted runner to the configured GitHub Actions runner group.
+# This operation is only supported for organization-scoped runners.
 if [[ "$INPUT_RUNNER_SCOPE" == "org" ]]; then
 curl -L \
 	-X "PUT" \
