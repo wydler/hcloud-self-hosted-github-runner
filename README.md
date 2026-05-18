@@ -1,4 +1,4 @@
-# Self-Hosted GitHub Actions Runner on Hetzner Cloud
+# GitHub self-hosted runners for Hetzner Cloud
 
 [![Badge: Hetzer](https://img.shields.io/badge/Hetzner-D50C2D.svg?logo=hetzner&logoColor=white)](#readme)
 [![Badge: GitHub](https://img.shields.io/badge/GitHub-181717.svg?logo=github&logoColor=white)](#readme)
