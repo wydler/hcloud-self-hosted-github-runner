@@ -223,10 +223,10 @@ if [[ "$INPUT_RUNNER_SCOPE" == "org" ]]; then
 		-H "Authorization: Bearer ${MY_GITHUB_TOKEN}" \
 		-H "X-GitHub-Api-Version: 2022-11-28" \
 		"https://api.github.com/${MY_RUNNER_SCOPE}/actions/runner-groups" \
-		|| exit_with_failure "Failed to get GitHub Runner groups from ${INPUT_RUNNER_SCOPE}:${INPUT_RUNNER_GROUP}!"
+		|| exit_with_failure "Failed to get GitHub Runner groups from ${INPUT_RUNNER_SCOPE}:${MY_GITHUB_RUNNER_GROUP_NAME}!"
 
 	#
-	MY_GITHUB_RUNNER_GROUP_ID=$(jq -er ".runner_groups[] | select(.name == \"$INPUT_RUNNER_GROUP\") | .id" < "github-runner-groups.json")
+	MY_GITHUB_RUNNER_GROUP_ID=$(jq -er ".runner_groups[] | select(.name == \"$MY_GITHUB_RUNNER_GROUP_NAME\") | .id" < "github-runner-groups.json")
 
 	# Check if MY_GITHUB_RUNNER_GROUP_ID is an integer
 	if [[ ! "$MY_GITHUB_RUNNER_GROUP_ID" =~ ^[0-9]+$ ]]; then
