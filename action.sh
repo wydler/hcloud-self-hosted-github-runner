@@ -213,6 +213,25 @@ if [[ "$INPUT_RUNNER_SCOPE" == "org" ]]; then
 	MY_RUNNER_SCOPE=orgs/${GITHUB_REPOSITORY%%/*}           # For api.github.com/${MY_RUNNER_SCOPE}/...
 	MY_RUNNER_TARGET=${GITHUB_REPOSITORY%%/*}               # For runner's `./config.sh --url ${MY_RUNNER_TARGET} ...`
 	MY_RUNNER_URL="organizations/${GITHUB_REPOSITORY%%/*}"  # For github.com/${MY_RUNNER_URL}/...
+
+	#
+	curl -L \
+		--fail-with-body \
+		-o "github-runner-groups.json" \
+		-H "Accept: application/vnd.github+json" \
+		-H "Authorization: Bearer ${MY_GITHUB_TOKEN}" \
+		-H "X-GitHub-Api-Version: 2022-11-28" \
+		"https://api.github.com/${MY_RUNNER_SCOPE}/actions/runner-groups" \
+		|| exit_with_failure "Failed to get GitHub Runner groups from ${INPUT_RUNNER_SCOPE}:${INPUT_RUNNER_GROUP}!"
+
+	#
+	MY_GITHUB_RUNNER_GROUP_ID=$(jq -er ".runner_groups[] | select(.name == \"$INPUT_RUNNER_GROUP\") | .id" < "github-runner-groups.json")
+
+	# Check if MY_GITHUB_RUNNER_GROUP_ID is an integer
+	if [[ ! "$MY_GITHUB_RUNNER_GROUP_ID" =~ ^[0-9]+$ ]]; then
+		exit_with_failure "Failed to get ID of the GitHub runner group!"
+	fi
+	
 elif [[ "$INPUT_RUNNER_SCOPE" == "repo" ]]; then
 	MY_RUNNER_SCOPE=repos/${GITHUB_REPOSITORY}
 	MY_RUNNER_TARGET=${GITHUB_REPOSITORY}
