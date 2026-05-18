@@ -14,7 +14,8 @@
     "gh-ver": $runner_version,
     "gh-owner-id": $github_owner_id,
     "gh-repo-id": $github_repo_id,
-    "runner-scope": $runner_scope
+    "runner-scope": $runner_scope,
+    "runner-group": $runner_group
   },
   "automount": false,
   "public_net": {
