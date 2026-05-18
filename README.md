@@ -266,6 +266,7 @@ debian-12          Debian 12
 debian-13          Debian 13
 fedora-42          Fedora 42
 fedora-43          Fedora 43
+fedora-44          Fedora 44
 opensuse-15        openSUSE Leap 15
 opensuse-16        openSUSE Leap 16
 rocky-10           Rocky Linux 10
