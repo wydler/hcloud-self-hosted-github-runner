@@ -231,7 +231,7 @@ if [[ "$INPUT_RUNNER_SCOPE" == "org" ]]; then
 	if [[ ! "$MY_GITHUB_RUNNER_GROUP_ID" =~ ^[0-9]+$ ]]; then
 		exit_with_failure "Failed to get ID of the GitHub runner group!"
 	fi
-	
+
 elif [[ "$INPUT_RUNNER_SCOPE" == "repo" ]]; then
 	MY_RUNNER_SCOPE=repos/${GITHUB_REPOSITORY}
 	MY_RUNNER_TARGET=${GITHUB_REPOSITORY}
@@ -589,6 +589,20 @@ while [[ $RETRY_COUNT -lt $MAX_RETRIES ]]; do
 done
 if [[ ! "$MY_GITHUB_RUNNER_ID" =~ ^[0-9]+$ ]]; then
 	exit_with_failure "GitHub Actions Runner is not registered. Please check installation manually."
+fi
+
+#
+if [[ "$INPUT_RUNNER_SCOPE" == "org" ]]; then
+curl -L \
+	-X "PUT" \
+	--fail-with-body \
+	-o "registration-token.json" \
+	-H "Accept: application/vnd.github+json" \
+	-H "Authorization: Bearer ${MY_GITHUB_TOKEN}" \
+	-H "X-GitHub-Api-Version: 2022-11-28" \
+	"https://api.github.com/orgs/wydler/actions/runner-groups/${MY_GITHUB_RUNNER_GROUP_ID}/runners/${MY_GITHUB_RUNNER_ID}" \
+	|| exit_with_failure "Failed to retrieve GitHub Actions Runner registration token!"
+echo "Moved runner to runner group successfully."
 fi
 
 echo
