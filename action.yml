@@ -188,6 +188,7 @@ runs:
         INPUT_RUNNER_VERSION: ${{ inputs.runner_version }}
         INPUT_RUNNER_WAIT: ${{ inputs.runner_wait }}
         INPUT_RUNNER_SCOPE: ${{ inputs.runner_scope }}
+        INPUT_RUNNER_GROUP: ${{ inputs.runner_group }}
         INPUT_RUNNER_START_METHOD: ${{ inputs.runner_start_method }}
         INPUT_SERVER_ID: ${{ inputs.server_id }}
         INPUT_SERVER_TYPE: ${{ inputs.server_type }}
