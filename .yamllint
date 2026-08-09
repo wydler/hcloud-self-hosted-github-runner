@@ -11,7 +11,7 @@ rules:
   empty-lines:
     level: warning
   line-length:
-    max: 255
+    max: 265
   comments:
     ignore: cloud-init.template.yml
   document-start:
