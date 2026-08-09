@@ -179,6 +179,7 @@ jobs:
 | `runner_group`            |   | Select runner group for the runner. Only available for organization runner (runner_scope: 'org') | `Default` |
 | `runner_start_method` |   | Defines how the GitHub runner process is started. Supported values are `standalone`, `systemd` and `systemd-stopped`. | `standalone` |
 | `no_retry_on_delete_404`  |   | The action does not attempt to delete again if the API already returns a 404 Not Found. Supported values are `true` and `false`. | `false` |
+| `runner_labels`           |   | Optional labels that are assigned to the GitHub Runner. If no labels are specified, the runner is created without additional labels. |  |
 
 ## Outputs
 

@@ -292,6 +292,13 @@ else
 	SERVER_RETRY_OPT="--retry-all-errors"
 fi
 
+# Optional labels to assign to the GitHub Runner
+MY_LABELS=${INPUT_LABELS:""}
+# Check allowed characters
+if [[ -n "$MY_LABELS" && ! "$MY_LABELS" =~ ^[a-zA-Z0-9_-]{1,64}$ ]]; then
+	exit_with_failure "'$MY_LABELS' is not a valid label!"
+fi
+
 #
 # DELETE
 #
@@ -401,6 +408,7 @@ export MY_PRE_RUNNER_SCRIPT_BASE64
 export MY_RUNNER_DIR
 export MY_RUNNER_VERSION
 export MY_RUNNER_TARGET
+export MY_LABELS
 
 # Setup runner start method. 
 # https://docs.github.com/en/actions/how-tos/manage-runners/self-hosted-runners/configure-the-application
