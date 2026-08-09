@@ -404,6 +404,7 @@ export MY_PRE_RUNNER_SCRIPT_BASE64
 export MY_RUNNER_DIR
 export MY_RUNNER_VERSION
 export MY_RUNNER_TARGET
+export MY_LABELS
 
 # Setup runner start method. 
 # https://docs.github.com/en/actions/how-tos/manage-runners/self-hosted-runners/configure-the-application
