@@ -148,6 +148,11 @@ inputs:
     required: false
     default: false
     type: 'boolean'
+  runner_labels:
+    description: >-
+      Custom labels for runners
+    required: false
+    default: ''
 
 outputs:
   label:
