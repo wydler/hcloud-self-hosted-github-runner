@@ -292,6 +292,9 @@ else
 	SERVER_RETRY_OPT="--retry-all-errors"
 fi
 
+# Optional labels to assign to the GitHub Runner
+MY_LABELS=${INPUT_LABELS:""}
+
 #
 # DELETE
 #
