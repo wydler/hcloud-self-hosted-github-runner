@@ -294,6 +294,10 @@ fi
 
 # Optional labels to assign to the GitHub Runner
 MY_LABELS=${INPUT_LABELS:""}
+# Check allowed characters
+if [[ ! "$MY_LABELS" =~ ^[a-zA-Z0-9_-]{1,64}$ ]]; then
+	exit_with_failure "'$MY_LABELS' is not a valid label!"
+fi
 
 #
 # DELETE
