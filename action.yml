@@ -200,3 +200,4 @@ runs:
         INPUT_SERVER_WAIT: ${{ inputs.server_wait }}
         INPUT_SSH_KEYS: ${{ inputs.ssh_key }}
         INPUT_VOLUMES: ${{ inputs.volume }}
+        INPUT_LABELS: ${{ inputs.runner_labels }}
