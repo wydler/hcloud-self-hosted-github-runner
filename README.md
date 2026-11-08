@@ -46,7 +46,7 @@ The following table provides a comparison of pricing between GitHub-managed Acti
 | 16 Core (Arm)   | 1,5600 | 0,0937 | 1,4663 | 93,99 |
 
 GitHub prices are based on January 1, 2026.
-Hetzner prices are based on April 1, 2026.
+Hetzner prices are based on June 15, 2026.
 
 ### Customization and Control
 
