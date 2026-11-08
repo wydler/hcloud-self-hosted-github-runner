@@ -34,16 +34,16 @@ This section highlights how using Hetzner Cloud with self-hosted runners for you
 
 The following table provides a comparison of pricing between GitHub-managed Actions runners and Hetzner Cloud with self-hosted runners (information provided without guarantee; prices exclude VAT):
 
-| Runner | [GitHub](https://docs.github.com/en/billing/reference/actions-runner-pricing) | [Hetzner](https://www.hetzner.com/cloud/) | Cost Saving | Cost Saving (%) |
-|-----------------|----------------|----------------|----------------|---------|
-| 2 Core (Intel)  | $0.3600 USD/hr | $0.0080 USD/hr | $0.3520 USD/hr | 97,78 % |
-| 4 Core (Intel)  | $0.7200 USD/hr | $0.0128 USD/hr | $0.7072 USD/hr | 98.22 % |
-| 8 Core (Intel)  | $1.3200 USD/hr | $0.0224 USD/hr | $1.2976 USD/hr | 98.30 % |
-| 16 Core (Intel) | $2.5200 USD/hr | $0.0425 USD/hr | $2.4775 USD/hr | 98.31 % |
-| 2 Core (Arm)    | $0.3000 USD/hr | $0.0088 USD/hr | $0.2912 USD/hr | 97.07 % |
-| 4 Core (Arm)    | $0.4800 USD/hr | $0.0152 USD/hr | $0.4648 USD/hr | 96.83 % |
-| 8 Core (Arm)    | $0.8400 USD/hr | $0.0296 USD/hr | $0.8104 USD/hr | 96.48 % |
-| 16 Core (Arm)   | $1.5600 USD/hr | $0.0593 USD/hr | $1.5007 USD/hr | 96.20 % |
+| Runner | [GitHub](https://docs.github.com/en/billing/reference/actions-runner-pricing) (USD/hr) | [Hetzner](https://www.hetzner.com/cloud/) (USD/hr) | Cost Saving (USD/hr) | Cost Saving (%) |
+|-----------------|--------|--------|--------|-------|
+| 2 Core (Intel)  | 0,3600 | 0,0136 | 0,3464 | 96,22 |
+| 4 Core (Intel)  | 0,7200 | 0,0202 | 0,6998 | 97,19 |
+| 8 Core (Intel)  | 1,3200 | 0,0364 | 1,2836 | 97,24 |
+| 16 Core (Intel) | 2,5200 | 0,0679 | 2,4521 | 97,31 |
+| 2 Core (Arm)    | 0,3000 | 0,0145 | 0,2855 | 95,17 |
+| 4 Core (Arm)    | 0,4800 | 0,0250 | 0,4550 | 94,79 |
+| 8 Core (Arm)    | 0,8400 | 0,0488 | 0,7912 | 94,19 |
+| 16 Core (Arm)   | 1,5600 | 0,0937 | 1,4663 | 93,99 |
 
 GitHub prices are based on January 1, 2026.
 Hetzner prices are based on April 1, 2026.
